@@ -1,0 +1,168 @@
+1. Supervised ML – Dataset/data has features (independent variables) and target (dependent variable/target) variables. It has two broad types: Classification and Regression.
+
+2. Unsupervised ML – Dataset/data having features alone or without target variables. Again classified into Clustering, Anomaly Detection, Dimensionality reduction, Association rule-based learning. 
+
+the SVM algorithm comes under Supervised ML, and to the surprise, it deals with both Classification and Regression.
+
+1. Classification: Finding a mapping function of the independent variable to identify discrete dependent variable, it can be labels or categories oriented. Here, the dependent variable is a qualitative type like binary or multi-label types like yes or no, normal or abnormal, and categorical types like good, better, best, type 1 or type 2, or type 3. Ex: Finding our mail between spam or not.
+
+2. Regression: Finding a correlation (mapping function) between the independent variable and dependent variable. Another important function is to predict a continuous value based on the independent variables. Here there won’t be any classes like in classification, instead of classes, if the dependent variable is in quantity like height, weight, income, rainfall prediction, or share market prediction, we go for the regression technique. Ex: Predicting rain for the next 5 days.
+
+1. SVM – Comes under Supervised ML
+2. SVM can perform both Classification & Regression
+3. Goal – Create the best decision boundary that can segregate n-dimensional space into classes so that we can easily put the new data points in the correct category – Hyperplane.
+4. Out-of-the-box classifier
+5. For a better understanding of SVM, we will learn:
+
+@ Maximal Margin Classifier
+@ Support Vector Classifier
+@ Support Vector Machine
+
+*******************************************************
+1. The data/vector points closest to the hyperplane (black line) are known as the support vector (SV) data points because only these two points are contributing to the result of the algorithm (SVM), other points are not.
+2. If a data point is not an SV, removing it has no effect on the model.
+3. Deleting the SV will then change the position of the hyperplane.
+
+The distance of the vectors from the hyperplane is called the margin which is a separation of a line to the closest class points. We would like to choose a hyperplane that maximizes the margin between classes. 
+
+If we select a hyper-plane having a low margin, then there is a high chance of misclassification.
+
+SVM selects the hyper-plane which classifies the classes accurately prior to maximizing the margin. 
+
+*********************************************************
+1 - Soft Margin – As most of the real-world data are not fully linearly separable, we will allow some margin violation to occur which is called soft margin classification. It is better to have a large margin, even though some constraints are violated. 
+
+Margin violation means choosing a hyperplane, which can allow some data points to stay on either the incorrect side of the hyperplane and between the margin and correct side of the hyperplane.
+
+2 - Hard Margin – If the training data is linearly separable, we can select two parallel hyperplanes that separate the two classes of data, so that the distance between them is as large as possible.
+
+*********************************************************
+Many have confusion with the terms SVM and SVC, the simple answer is if the hyperplane that we are using for classification is in linear condition, then the condition is SVC.
+
+The limitation of SVC is compensated by SVM non-linearly. And that’s the difference between SVM and SVC. If the hyperplane classifies the dataset linearly then the algorithm we call it as SVC and the algorithm that separates the dataset by non-linear approach then we call it as SVM.
+
+SVM has a technique called the kernel trick.
+
+These are functions that take low dimensional input space and transform it into a higher-dimensional space i.e. it converts not separable problem to separable problem.
+
+**********************************************************
+There are some famous and most frequently used Non-linear kernels in SVM are,
+
+1. Polynomial SVM Kernel
+
+2. Gaussian Radial Basis Function (RBF)
+
+3. Sigmoid Kernel
+
+************************************************************
+
+We thought we have plenty of parameters option, we will be using only very few alone because of its importance and for its impact,
+
+----------------------
+1. Regularization parameter (C):
+
+1. The C parameter in SVM is mainly used for the Penalty parameter of the error term.
+
+2. You can consider it as the degree of correct classification that the algorithm has to meet or the degree of optimization the SVM has to meet.
+
+3. Controls the tradeoff between the classification of training points accurately and a smooth decision boundary or in a simple word, it suggests the model choose data points as a support vector.
+
+3. For large C – then model choose more data points as a support vector and we get the higher variance and lower bias, which may lead to the problem of overfitting.
+
+4. For small C – If the value of C is small then the model chooses fewer data points as a support vector and gets lower variance/high bias.
+
+---------------------
+
+2- Gamma Parameter:  
+
+1. Gamma is used when we use the Gaussian RBF kernel.
+
+2.If you use linear or polynomial kernel then you do not need gamma only you need C hypermeter.
+
+3. It decides that how much curvature we want in a decision boundary.
+
+4. High Gamma value – More curvature
+
+5. Low Gamma value – Less curvature
+
+---------------------
+
+Note: The goal is to find the balance between “not too strict” and “not too loose”. Cross-validation and resampling, along with grid search, are good ways to finding the best C. Then choosing gamma values are associated with C for better accuracy.
+
+---------------------
+
+3- Kernel:
+
+In this parameter, it’s very simple, in this parameter few option’s are there like if you want to model it in a linear manner, we go for ‘linear’ or if your model did not have proper accuracy then you go for non-linear SVM like ‘rbf’, ‘poly’ and ‘sigmoid’ for better accuracy.
+
+Here, we have various options available with kernel like “linear,” “rbf”, ”poly”, and others (default value is “rbf”).
+Here “rbf”(radial basis function) and “poly”(polynomial kernel) are useful for non-linear hyper-plane. It’s called nonlinear svm.
+
+---------------------
+
+4- Degree:
+
+1. It controls the flexibility of the decision boundary.
+
+2. Higher degrees yield more flexible decision boundaries.
+
+3. Highly recommended for polynomial kernel
+
+---------------------
+
+5- Random State:
+
+This particular parameter, 50-50 people use it and others won’t. This is not so important, ensures that the splits that you generate are reproducible, like we give mostly the value as 0 or 1 or it may be any other number too.
+
+--------------------
+
+Advantage:
+
+1. More effective for high dimensional space
+
+2. Works well with even unstructured and semi-structured data like text, Images, and trees
+
+3. Handles non-linear data efficiently by using the kernel trick
+
+4. SVM has an L2 Regularization feature. So, it has good generalization capabilities which prevent it from over-fitting
+
+5. A small change to the data does not greatly affect the hyperplane and hence the SVM. So the SVM model is stable
+
+Disadvantage:
+
+1. Not suitable for large dataset
+
+2. Sensitive to outliers (If you have more in the dataset then SVM is not the right choice!)
+
+3. Hyperparameters like cost (C) and gamma of SVM, is not that easy to fine-tune and also hard to visualize their impact
+
+4. SVM takes a long training time on large datasets
+
+5. SVM model is difficult to understand and interpret by human beings, unlike Decision Trees.
+
+6. One must do feature scaling of variables before applying SVM
+
+Applications:
+
+1. Handwriting recognition
+
+2. Face Detection
+
+3. Text and hypertext categorization
+
+4. Image Classification
+
+5. Bioinformatics (protein classification and cancer classification)
+
+********************************************
+
+As an analogy, think of ‘Regression’ as a sword capable of slicing and dicing data efficiently but incapable of dealing with highly complex data. That is where ‘Support Vector Machines’ acts like a sharp knife –
+it works on smaller datasets, but on complex ones, it can be much stronger and more powerful in building machine learning models.
+
+********************************************
+
+The SVM kernel is a function that takes low dimensional input space and transforms it to a higher dimensional space, i.e., it converts not separable problem to a separable problem. It is mostly useful in non-linear data separation problems. 
+
+if we should we need to add this feature manually to have a hyper-plan.
+
+
